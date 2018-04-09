@@ -16,6 +16,30 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { Routes, RouterModule } from '@angular/router';
 
+//Material design modules
+import { MatButtonModule,
+         MatCheckboxModule,
+         MatCardModule,
+         MatGridListModule,
+         MatInputModule,
+         MatDatepickerModule,
+         MatNativeDateModule,
+         MatToolbarModule,
+         MatProgressSpinnerModule,
+         MatTabsModule,
+         MatListModule,
+         MatIconModule
+       } from '@angular/material';
+
+
+//Firebase configuration
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+//service
+import { FirebaseService } from './services/firebase.service';
+
 //Routes
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -41,9 +65,15 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    MatButtonModule, MatCheckboxModule, MatCardModule,
+    MatGridListModule, MatInputModule, MatDatepickerModule,
+    MatNativeDateModule, MatToolbarModule, MatListModule,
+    MatIconModule, MatTabsModule, MatProgressSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebase, 'book-notes-app'),
+    AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

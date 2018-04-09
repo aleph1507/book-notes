@@ -1,3 +1,16 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+
+    <div>
+      <a class="navbar-brand" [routerLink]="['/']">Book Notes</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav narbar-nav mr-auto">
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/']">Home</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/books']">Books</a> </li>
+        <li class="nav-item"> <a class="nav-link" [routerLink]="['/add-book']">Add Book</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

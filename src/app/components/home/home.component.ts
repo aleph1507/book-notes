@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  courseTitle = "Books Notes";
+  favoriteBooks: any;
+  unreadBooks: any;
 
-  clicked(){
-    console.log("h2 clicked");
-  }
-
-  constructor() { }
+  constructor(private firebaseService: FirebaseService) { }
 
   ngOnInit() {
+    this.firebaseService.getFavoriteBooks()
+      .subscribe(favBooks =>{
+        this.favoriteBooks = favBooks;
+        console.log(favBooks);
+      });
+
+    this.firebaseService.getUnreadBooks()
+      .subscribe(ubBooks =>{
+        this.unreadBooks = ubBooks;
+        console.log('unread: ',this.unreadBooks);
+      })
   }
 
 }
